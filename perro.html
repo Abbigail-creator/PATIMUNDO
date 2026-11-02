@@ -14,33 +14,16 @@
 /* Distribución general en dos columnas */
 .care-layout {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
   align-items: start;
   margin-top: 1rem;
-}
-
-.care-column {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  min-width: 0;
-}
-
-/* Tarjetas independientes para las fotografías */
-.care-photo-card {
   width: 100%;
-  padding: .65rem;
-  border: 1px solid rgba(44, 120, 91, .17);
-  border-radius: 18px;
-  background: #ffffff;
-  box-shadow: 0 6px 20px rgba(35, 70, 52, .08);
-  overflow: hidden;
 }
 
 .care-photo-frame {
   width: 100%;
-  height: 245px;
+  height: 340px;
   overflow: hidden;
   border-radius: 13px;
   background: #e8f5ee;
@@ -50,10 +33,68 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   border-radius: 13px;
+  background: #e8f5ee;
 }
+
+.care-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+
+/* TARJETAS DE FOTOGRAFÍAS MÁS ALTAS */
+
+.care-photo-card {
+  width: 100%;
+  padding: .65rem;
+  border: 1px solid rgba(44, 120, 91, .17);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(35, 70, 52, .08);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+/* AJUSTE DEFINITIVO DE LAS FOTOGRAFÍAS */
+.care-photo-card {
+  width: 80% !important; /* Ajusta el ancho a tu gusto */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 10px !important;
+}
+
+.care-photo-frame {
+  width: 100% !important;
+  height: 450px !important;
+  min-height: 450px !important;
+  max-height: 450px !important;
+  overflow: hidden !important;
+  background: #e8f5ee;
+  border-radius: 15px;
+}
+
+.care-topic-image {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: none !important;
+  object-fit: fill !important;
+  object-position: center !important;
+  border-radius: 15px;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 650px) {
+  .care-photo-frame {
+    height: 350px;
+  }
+}
+
 
 /* Tarjetas de información */
 .care-content-card {
@@ -886,7 +927,8 @@ async function distribuirContenido(columnaIzquierda, columnaDerecha, tarjetas) {
       }
     }
 
-    async function mostrarTema(nombreTema) {
+
+async function mostrarTema(nombreTema) {
   document.querySelectorAll(".care-card").forEach(boton => {
     boton.classList.toggle(
       "active",
@@ -941,23 +983,14 @@ async function distribuirContenido(columnaIzquierda, columnaDerecha, tarjetas) {
     descripcion: "🐶"
   };
 
-  /* Crear las dos columnas */
+  // Distribución vertical para los siete botones.
   const distribucion = document.createElement("div");
   distribucion.className = "care-layout";
-
-  const columnaIzquierda = document.createElement("div");
-  columnaIzquierda.className = "care-column";
-
-  const columnaDerecha = document.createElement("div");
-  columnaDerecha.className = "care-column";
-
-  distribucion.append(columnaIzquierda, columnaDerecha);
-  panel.appendChild(distribucion);
-  if (nombreTema === "vacunacion" || nombreTema === "veterinario") {
   distribucion.style.gridTemplateColumns = "1fr";
-}
 
-  /* Recuperar las dos imágenes originales del tema */
+  panel.appendChild(distribucion);
+
+  // Recuperar las dos imágenes originales de cada raza y tema.
   const raza = obtenerClaveImagenRaza();
   const imagenes = imagenesPorRaza[raza]?.[nombreTema];
 
@@ -967,37 +1000,16 @@ async function distribuirContenido(columnaIzquierda, columnaDerecha, tarjetas) {
     );
     return;
   }
-  /* Primera imagen: parte superior izquierda */
+
+  // PRIMERA IMAGEN: arriba de toda la información.
   const primeraImagen = crearTarjetaFoto(
     imagenes[0],
     "Fotografía relacionada con " + tema.titulo
   );
 
-  columnaIzquierda.appendChild(primeraImagen);
+  distribucion.appendChild(primeraImagen);
 
-  const imagenPrincipal = primeraImagen.querySelector("img");
-
-  await esperarImagen(imagenPrincipal);
-
-  /* Segunda imagen: ubicación según el tema */
-  const segundaImagen = crearTarjetaFoto(
-    imagenes[1],
-    "Segunda fotografía relacionada con " + tema.titulo
-  );
-
-  const esVacunacionOVeterinario =
-    nombreTema === "vacunacion" || nombreTema === "veterinario";
-
-  if (!esVacunacionOVeterinario) {
-    columnaDerecha.appendChild(segundaImagen);
-
-    const imagenSecundaria = segundaImagen.querySelector("img");
-    await esperarImagen(imagenSecundaria);
-  }
-
-  /* Crear todas las tarjetas de información sin alterar sus textos */
-  const tarjetas = [];
-
+  // TARJETAS DE INFORMACIÓN: conservar todos los textos originales.
   secciones.forEach(seccion => {
     const tarjeta = document.createElement("article");
     tarjeta.className = "care-content-card";
@@ -1028,22 +1040,18 @@ async function distribuirContenido(columnaIzquierda, columnaDerecha, tarjetas) {
       tarjeta.appendChild(lista);
     }
 
-    tarjetas.push(tarjeta);
+    distribucion.appendChild(tarjeta);
   });
 
-  /* Repartir la información entre las dos columnas */
-  await distribuirContenido(
-    columnaIzquierda,
-    columnaDerecha,
-    tarjetas
+  // SEGUNDA IMAGEN: debajo de toda la información.
+  const segundaImagen = crearTarjetaFoto(
+    imagenes[1],
+    "Segunda fotografía relacionada con " + tema.titulo
   );
 
-  /* Vacunación y Veterinario mantienen la segunda imagen al final */
-  if (esVacunacionOVeterinario) {
-    distribucion.appendChild(segundaImagen);
-    segundaImagen.style.gridColumn = "1 / -1";
-  }
+  distribucion.appendChild(segundaImagen);
 }
+
     // Activar los botones de temas.
     document.querySelectorAll(".care-card").forEach(boton => {
       boton.addEventListener("click", () => {

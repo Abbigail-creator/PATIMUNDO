@@ -155,6 +155,36 @@
     height: 175px !important;
   }
 }
+/* MISMO TAMAÑO Y PRESENTACIÓN PARA LAS DOS IMÁGENES */
+
+#contenidoTema .care-special-layout > .care-special-image-card {
+  width: min(100%, 620px) !important;
+  margin: 0 auto !important;
+  padding: 10px !important;
+  box-sizing: border-box !important;
+  border: 1px solid rgba(44, 120, 91, .17);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(35, 70, 52, .08);
+}
+
+#contenidoTema .care-special-image {
+  width: 100% !important;
+  height: 320px !important;
+  min-height: 320px !important;
+  max-height: 320px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 13px;
+}
+
+@media (max-width: 600px) {
+  #contenidoTema .care-special-image {
+    height: 230px !important;
+    min-height: 230px !important;
+    max-height: 230px !important;
+  }
+}
   </style>
 </head>
 
@@ -630,115 +660,78 @@ function mostrarTema(nombreTema) {
   const rejilla = document.createElement("div");
   rejilla.className = "care-content-grid";
 
-  // DISEÑO DE LOS PRIMEROS CINCO BOTONES
-  if (primerosCinco.includes(nombreTema)) {
+// MISMO DISEÑO PARA LOS SIETE BOTONES
 
-    if (!imagenes || imagenes.length !== 2) {
-      mostrarMensaje("No se encontraron los dos enlaces de imágenes para esta raza y tema.");
-      return;
-    }
-
-    rejilla.classList.add("care-two-column-layout");
-
-    const mitad = Math.ceil(secciones.length / 2);
-
-    for (let columna = 0; columna < 2; columna++) {
-      const tarjeta = document.createElement("article");
-      tarjeta.className = "care-content-card care-image-column";
-
-      const imagen = document.createElement("img");
-      imagen.className = "care-card-image-large";
-      imagen.src = imagenes[columna];
-      imagen.alt = "Gato relacionado con " + nombreTema;
-      imagen.loading = "lazy";
-      imagen.decoding = "async";
-      imagen.addEventListener("error", () => imagen.remove(), { once: true });
-
-      tarjeta.appendChild(imagen);
-
-      const inicio = columna === 0 ? 0 : mitad;
-      const fin = columna === 0 ? mitad : secciones.length;
-
-      for (let i = inicio; i < fin; i++) {
-        crearSeccion(tarjeta, secciones[i]);
-      }
-
-      rejilla.appendChild(tarjeta);
-    }
-} else {
-  // DISEÑO ESPECIAL PARA VACUNACIÓN Y VETERINARIO
-
-  if (!imagenes || imagenes.length !== 2) {
-    mostrarMensaje("No se encontraron las dos imágenes para este tema.");
-    return;
-  }
-
-  rejilla.classList.add("care-special-layout");
-
-  // PRIMERA IMAGEN GRANDE
-  const tarjetaImagenSuperior = document.createElement("div");
-  tarjetaImagenSuperior.className = "care-special-image-card";
-
-  const imagenSuperior = document.createElement("img");
-  imagenSuperior.src = imagenes[0];
-  imagenSuperior.alt = "Gato relacionado con " + nombreTema;
-  imagenSuperior.className = "care-special-image";
-  imagenSuperior.loading = "lazy";
-  imagenSuperior.decoding = "async";
-  imagenSuperior.addEventListener("error", () => imagenSuperior.remove(), { once: true });
-
-  tarjetaImagenSuperior.appendChild(imagenSuperior);
-  rejilla.appendChild(tarjetaImagenSuperior);
-
-  // TARJETA CENTRAL CON TODA LA INFORMACIÓN
-  const tarjetaInformacion = document.createElement("article");
-  tarjetaInformacion.className = "care-content-card care-special-info";
-
-  secciones.forEach(seccion => {
-    const cabecera = document.createElement("div");
-    cabecera.className = "care-content-card-heading";
-
-    const icono = document.createElement("span");
-    icono.className = "care-content-card-icon";
-    icono.textContent = iconosTema[nombreTema] || "🐾";
-    icono.setAttribute("aria-hidden", "true");
-
-    const subtitulo = document.createElement("h3");
-    subtitulo.textContent = seccion.titulo || "Información";
-
-    cabecera.append(icono, subtitulo);
-    tarjetaInformacion.appendChild(cabecera);
-
-    if (Array.isArray(seccion.items) && seccion.items.length > 0) {
-      const lista = document.createElement("ul");
-
-      seccion.items.forEach(texto => {
-        const elemento = document.createElement("li");
-        elemento.textContent = texto;
-        lista.appendChild(elemento);
-      });
-
-      tarjetaInformacion.appendChild(lista);
-    }
-  });
-
-  rejilla.appendChild(tarjetaInformacion);
-
-  // SEGUNDA IMAGEN GRANDE
-  const tarjetaImagenInferior = document.createElement("div");
-  tarjetaImagenInferior.className = "care-special-image-card";
-
-  const imagenInferior = document.createElement("img");
-  imagenInferior.src = imagenes[1];
-  imagenInferior.alt = "Otra fotografía relacionada con " + nombreTema;
-  imagenInferior.className = "care-special-image";
-  imagenInferior.loading = "lazy";
-  imagenInferior.decoding = "async";
-  imagenInferior.addEventListener("error", () => imagenInferior.remove(), { once: true });
-
-  tarjetaImagenInferior.appendChild(imagenInferior);
-  rejilla.appendChild(tarjetaImagenInferior);
+if (!imagenes || imagenes.length !== 2) {
+  mostrarMensaje("No se encontraron los dos enlaces de imágenes para esta raza y tema.");
+  return;
 }
+
+rejilla.classList.add("care-special-layout");
+
+// PRIMERA IMAGEN GRANDE EN LA PARTE SUPERIOR
+const tarjetaImagenSuperior = document.createElement("div");
+tarjetaImagenSuperior.className = "care-special-image-card";
+
+const imagenSuperior = document.createElement("img");
+imagenSuperior.src = imagenes[0];
+imagenSuperior.alt = "Gato relacionado con " + nombreTema;
+imagenSuperior.className = "care-special-image";
+imagenSuperior.loading = "lazy";
+imagenSuperior.decoding = "async";
+imagenSuperior.addEventListener("error", () => imagenSuperior.remove(), { once: true });
+
+tarjetaImagenSuperior.appendChild(imagenSuperior);
+rejilla.appendChild(tarjetaImagenSuperior);
+
+// TARJETA CENTRAL CON TODA LA INFORMACIÓN
+const tarjetaInformacion = document.createElement("article");
+tarjetaInformacion.className = "care-content-card care-special-info";
+
+secciones.forEach(seccion => {
+  const cabecera = document.createElement("div");
+  cabecera.className = "care-content-card-heading";
+
+  const icono = document.createElement("span");
+  icono.className = "care-content-card-icon";
+  icono.textContent = iconosTema[nombreTema] || "🐾";
+  icono.setAttribute("aria-hidden", "true");
+
+  const subtitulo = document.createElement("h3");
+  subtitulo.textContent = seccion.titulo || "Información";
+
+  cabecera.append(icono, subtitulo);
+  tarjetaInformacion.appendChild(cabecera);
+
+  if (Array.isArray(seccion.items) && seccion.items.length > 0) {
+    const lista = document.createElement("ul");
+
+    seccion.items.forEach(texto => {
+      const elemento = document.createElement("li");
+      elemento.textContent = texto;
+      lista.appendChild(elemento);
+    });
+
+    tarjetaInformacion.appendChild(lista);
+  }
+});
+
+rejilla.appendChild(tarjetaInformacion);
+
+// SEGUNDA IMAGEN GRANDE EN LA PARTE INFERIOR
+const tarjetaImagenInferior = document.createElement("div");
+tarjetaImagenInferior.className = "care-special-image-card";
+
+const imagenInferior = document.createElement("img");
+imagenInferior.src = imagenes[1];
+imagenInferior.alt = "Otra fotografía relacionada con " + nombreTema;
+imagenInferior.className = "care-special-image";
+imagenInferior.loading = "lazy";
+imagenInferior.decoding = "async";
+imagenInferior.addEventListener("error", () => imagenInferior.remove(), { once: true });
+
+tarjetaImagenInferior.appendChild(imagenInferior);
+rejilla.appendChild(tarjetaImagenInferior);
 
   panel.appendChild(rejilla);
 }
