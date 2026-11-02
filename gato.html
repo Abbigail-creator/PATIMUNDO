@@ -1,0 +1,753 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi gato | PatiMundo</title>
+  <link rel="stylesheet" href="estilo.css">
+
+  <style>
+    #contenidoTema > h2 { margin-bottom: 1.2rem; }
+    .care-content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+      gap: 1rem;
+      align-items: start;
+      margin-top: 1rem;
+    }
+    .care-content-card {
+      min-width: 0;
+      padding: 1.1rem 1.2rem;
+      border: 1px solid rgba(44, 120, 91, .17);
+      border-radius: 18px;
+      background: linear-gradient(145deg, #ffffff, #f7fbf6);
+      box-shadow: 0 6px 20px rgba(35, 70, 52, .06);
+      overflow-wrap: anywhere;
+    }
+    .care-content-card-heading {
+      display: flex;
+      align-items: flex-start;
+      gap: .65rem;
+      margin-bottom: .85rem;
+    }
+    .care-content-card-icon {
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 2.35rem;
+      height: 2.35rem;
+      border-radius: 12px;
+      background: #e9f5eb;
+      font-size: 1.25rem;
+    }
+    .care-content-card h3 {
+      margin: .25rem 0 0;
+      color: #28664e;
+      font-size: 1.02rem;
+      line-height: 1.4;
+    }
+    .care-content-card ul { margin: 0; padding-left: 1.15rem; }
+    .care-content-card li {
+      margin: 0 0 .75rem;
+      line-height: 1.72;
+      overflow-wrap: anywhere;
+    }
+    .care-content-card li:last-child { margin-bottom: 0; }
+
+    .care-card-images {
+      display: flow-root;
+      margin: .15rem 0 .65rem;
+    }
+    .care-card-image {
+      width: 112px;
+      height: 88px;
+      object-fit: cover;
+      border-radius: 13px;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 12px rgba(35, 70, 52, .12);
+    }
+    .care-card-image:first-child {
+      float: left;
+      margin: 0 .85rem .65rem 0;
+    }
+    .care-card-image:last-child {
+      float: right;
+      margin: .65rem 0 .25rem .85rem;
+    }
+    .care-message {
+      padding: 1rem;
+      border-radius: 12px;
+      background: #f7fbf6;
+      line-height: 1.6;
+    }
+    @media (max-width: 600px) {
+      .care-content-grid { grid-template-columns: 1fr; }
+      .care-content-card { padding: 1rem; }
+      .care-card-image { width: min(40%, 112px); height: 82px; }
+    }
+    .care-two-column-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.care-image-column {
+  min-width: 0;
+  height: 100%;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.care-card-image-large {
+  display: block;
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.care-info-section {
+  padding: .4rem 0;
+}
+
+.care-info-section h3 {
+  margin-bottom: .65rem;
+}
+
+.care-info-section ul {
+  padding-left: 1.2rem;
+}
+
+/* CORRECCIÓN DEFINITIVA: VACUNACIÓN Y VETERINARIO */
+
+#contenidoTema .care-content-grid.care-special-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  width: 100% !important;
+  gap: 1.2rem !important;
+}
+
+#contenidoTema .care-special-layout > .care-special-image-card,
+#contenidoTema .care-special-layout > .care-special-info {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+#contenidoTema .care-special-image {
+  display: block !important;
+  width: 100% !important;
+  height: 210px !important;
+  object-fit: cover;
+  border-radius: 13px;
+}
+
+#contenidoTema .care-special-info {
+  padding: 1.2rem !important;
+}
+
+@media (max-width: 600px) {
+  #contenidoTema .care-special-image {
+    height: 175px !important;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="index.html" class="brand">
+      🐾 Pati<span class="green">Mundo</span>
+    </a>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="gato.html">Gatos</a>
+      <a href="información.html">Información</a>
+      <a href="mascota.html" class="nav-cta">Editar mascota</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="profile-header">
+      <img
+        id="fotoPerfil"
+        class="profile-photo"
+        src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=400&q=80"
+        alt="Foto de tu gato"
+      >
+      <div class="profile-info">
+        <span class="eyebrow">MI COMPAÑERO FELINO 🐾</span>
+        <h1 id="nombrePerfil">Mi gatito</h1>
+        <div class="profile-tags">
+          <span class="profile-tag" id="categoriaPerfil">Raza no indicada</span>
+          <span class="profile-tag" id="edadPerfil">Etapa no indicada</span>
+          <span class="profile-tag" id="sexoPerfil">Sexo no indicado</span>
+        </div>
+        <p id="descripcionPerfil">
+          Registra a tu gato para ver sus cuidados personalizados.
+        </p>
+      </div>
+    </section>
+
+    <section class="care-section">
+      <span class="eyebrow">GUÍA DE CUIDADOS</span>
+      <h2>¿Qué necesitas saber hoy?</h2>
+      <p>Elige un tema para consultar los cuidados de tu gato.</p>
+
+      <div class="care-grid" id="careGrid">
+        <button type="button" class="care-card active" data-tema="alimentacion">
+          <span class="care-icon">🥣</span>
+          <h3>Alimentación</h3>
+          <p>Nutrición, agua y hábitos saludables.</p>
+        </button>
+        <button type="button" class="care-card" data-tema="salud">
+          <span class="care-icon">🩺</span>
+          <h3>Salud</h3>
+          <p>Prevención y señales que observar.</p>
+        </button>
+        <button type="button" class="care-card" data-tema="primeros">
+          <span class="care-icon">🩹</span>
+          <h3>Primeros auxilios</h3>
+          <p>Cómo actuar ante una emergencia.</p>
+        </button>
+        <button type="button" class="care-card" data-tema="cuidados">
+          <span class="care-icon">🛁</span>
+          <h3>Cuidados</h3>
+          <p>Higiene, juego y ambiente seguro.</p>
+        </button>
+        <button type="button" class="care-card" data-tema="comportamiento">
+          <span class="care-icon">🐈</span>
+          <h3>Comportamiento</h3>
+          <p>Juego, comunicación y bienestar.</p>
+        </button>
+        <button type="button" class="care-card" data-tema="vacunacion">
+          <span class="care-icon">💉</span>
+          <h3>Vacunación</h3>
+          <p>Prevención y controles veterinarios.</p>
+        </button>
+        <button type="button" class="care-card" data-tema="veterinario">
+          <span class="care-icon">🏥</span>
+          <h3>Cuándo ir al veterinario</h3>
+          <p>Señales que necesitan atención profesional.</p>
+        </button>
+      </div>
+    </section>
+
+    <section class="info-panel" id="contenidoTema" aria-live="polite">
+      <h2>🥣 Alimentación</h2>
+      <p>Selecciona una mascota registrada para ver su información.</p>
+    </section>
+
+    <section class="info-panel">
+      <p class="form-note">
+        Esta guía es educativa y no sustituye la evaluación de un veterinario.
+        Ante una emergencia, contacta a un profesional veterinario.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <strong>🐾 PatiMundo</strong>
+    <span>Cuidar también es una forma de amar.</span>
+  </footer>
+
+  <script src="cuidados-gatos.js"></script>
+
+  <script>
+    "use strict";
+
+    const etiquetasEtapa = {
+      cachorro: "Gatito",
+      adulto: "Adulto",
+      senior: "Senior o geriátrico"
+    };
+
+    let mascotaActual = null;
+    let datosActuales = null;
+    let claveRazaActual = "";
+
+    function normalizar(valor) {
+      return String(valor ?? "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "");
+    }
+
+    function obtenerBaseDatos() {
+      return window.PATIMUNDO_CUIDADOS_GATOS || {};
+    }
+
+    function encontrarRaza(raza) {
+      const base = obtenerBaseDatos();
+      const nombreBuscado = normalizar(raza);
+      if (!nombreBuscado) return null;
+
+      const equivalencias = {
+        gato: "criollo",
+        domestico: "criollo",
+        gatodomestico: "criollo",
+        domesticocriollo: "criollo",
+        gatodomesticocriollo: "criollo",
+        mestizo: "criollo",
+        criollo: "criollo",
+        siames: "siames",
+        persa: "persa",
+        mainecoon: "mainecoon",
+        angora: "angora"
+      };
+
+      const objetivo = equivalencias[nombreBuscado] || nombreBuscado;
+      const clave = Object.keys(base).find(nombre => normalizar(nombre) === objetivo);
+      if (clave) claveRazaActual = normalizar(clave);
+      return clave ? base[clave] : null;
+    }
+
+    function obtenerEtapa(mascota) {
+      const etapaTexto = normalizar(
+        mascota.categoriaEdad ?? mascota.etapa ?? mascota.etapaVida ?? mascota.categoriaEtapa ?? ""
+      );
+      if (etapaTexto.includes("gatito") || etapaTexto.includes("cachorro") || etapaTexto.includes("kitten")) return "cachorro";
+      if (etapaTexto.includes("senior") || etapaTexto.includes("geriatrico") || etapaTexto.includes("anciano")) return "senior";
+      if (etapaTexto.includes("adulto")) return "adulto";
+
+      const edadTexto = String(mascota.edad ?? "").trim();
+      const coincidencia = edadTexto.match(/\d+(?:[.,]\d+)?/);
+      if (!coincidencia) return null;
+      const edad = Number(coincidencia[0].replace(",", "."));
+      if (!Number.isFinite(edad) || edad < 0) return null;
+      const edadEnAnios = /mes(?:es)?/i.test(edadTexto) ? edad / 12 : edad;
+      if (edadEnAnios < 1) return "cachorro";
+      if (edadEnAnios >= 10) return "senior";
+      return "adulto";
+    }
+
+    function mostrarMensaje(mensaje) {
+      const panel = document.getElementById("contenidoTema");
+      panel.replaceChildren();
+      const texto = document.createElement("p");
+      texto.className = "care-message";
+      texto.textContent = mensaje;
+      panel.appendChild(texto);
+    }
+
+    /* Enlaces directos separados por raza y por cada uno de los siete temas. */
+    const imagenesPorRaza = {
+      criollo: {
+        alimentacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTImJ-Hv9BXvNs8EXKs1heefeMZ8hJMruH3WJE_ErGojw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXecEaUDPQ-uLXgJyvxf31YFPq6k50YIqnOCOkFgwiRA&s=10"
+        ],
+        salud: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTatZIntzx3XQXbYmC6mZfUm5d2LT7ueAbYpcra0G5BGw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBEFSHV_MndYORSV5_rzx0hgUzmFL36z27derlJC5XxQ&s=10"
+        ],
+        primeros: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJjIoMqnhGHJaESsfY1XrV1AP7hZCFHq6vIwVJteIAZYrtRNCcTudYeD4t&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_af8IGJdqOJdtARYCS6Y-gVE7ETKrdWlc4MvgGQd6AQ&s=10"
+        ],
+        cuidados: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl31EPXVxmyurkWd7NcMRPLMJfnCTToKwl0CEixwYoZQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Jp52JDCztKkJBfONSqsOmxuJCqex251kI6h6x9_qRQ&s=10"
+        ],
+        comportamiento: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAzXga06qm8YDhwargAZlKDYMIr2GeliheJmBOHsFp7A&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVJKIsGytL527PwR1c1TzaR3veZvScWOlF2-RfuJn9yA&s=10"
+        ],
+        vacunacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR95-48lHKwuMw8jTypgVCfWw03vMfG4s_8pQaam_ym5g&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9r2EeTZHOP4KGbDgX0CPEgDaG_1BzjWw83diKgjM_Yg&s=10"
+        ],
+        veterinario: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVWtNV9nIZ05X0Sao465zdTeDlOJOPxvOUpHbk0N6HoA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwv3OTkY5U8TMltJCsWNNnCJSuoHaIoeg6lkbehbMNQ&s=10"
+        ]
+      },
+      siames: {
+        alimentacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNKBvRvgqJb3qpd4jbIut-n9HyOn7u4YqqADvEgrJ2Mg&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJNY_3pErAO9ikZ1eIbzrHVt_p66sn6CMC-aDrszcKDw&s=10"
+        ],
+        salud: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0Xat5UndCVIXMRGTIPzWAXPp1SvfpVA7VT37SN8E6fA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU0JDe6PtRT4p0yJNWUANxlRMCmB6m683jLPlF6UlNRg&s=10"
+        ],
+        primeros: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWwhe6VqsZ_TTLAjb7bv-85G5iSQsDK2xSj3E_on6RtA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsWFx-hpqhqNQSRVbZ-t3C_7HzNKXRvbVS_oELZwlS1A&s"
+        ],
+        cuidados: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCVqbzz2HmUe_z3h4iM_ib8DqNgO8je1_nW_AvAZXoVg&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcPfIxhr_oMlk-GQl82YAkflTqS1ShV4vmVGspn6qQXQ&s=10"
+        ],
+        comportamiento: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt7HD7vL71f-2wuhfbA5MKM0_AhzWRcjlTJPlEPBVcgg&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT43-Z9avlqJpCLHodX8S8JRnaMqnYbKlvFm3Adh8gnsw&s=10"
+        ],
+        vacunacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUb-_HuPgakpKbdIz_Z6iR5MapwuVWkJvThAoNW1P_kA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb-UAFyvYUpBw_qoYd3CcJ2U9fk-k0T2x6X3BU85PPfg&s=10"
+        ],
+        veterinario: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiZAXjmV4zkGuiwfa7HiS2FdF6ZvrQeD-8a6A4W2uVAtOVt6b5Oxh8dtNp&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSie8gFdI_vStXxYPyIPGIv0LLlKtylPIDcuJ8cYftOug&s=10"
+        ]
+      },
+      persa: {
+        alimentacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStASfWU9JqUZeHLKiG1ttnPy4JLAo3yZOrOz5ts_i9YQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQG-sDwlc-DwvSEF099FvT9rxO5OGEP8r5QIxpORxGjg&s=10"
+        ],
+        salud: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT721XKFethyoKAzJ4rt6ZlWfN48j7kZowr6O89Scsoyw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtusLEBCFNdb3-Q4fTblmExl6Hvb0iRhHVs6Lg-rcTsQ&s=10"
+        ],
+        primeros: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9EME9M9cSy9FvfHvcx2gMPkp1H5Dj4YaKufPRsAyon8Tf-g&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRJMjngHTtSZBSEz2Ujv5LaxLCHkbdKXZHAILPUVGp6A&s"
+        ],
+        cuidados: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQekVEmyZCbo1fc-0PtI9MS46TcaUnEi6TYO3bhIsk6Bg&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSngtyLeSCaWRuaXvfMsrPcok7uK_Sjmi7u8bX-OF0OEA&s=10"
+        ],
+        comportamiento: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJhMVxrlYmCNm3WHuKJCMI0-Y5MKdN7q05A2N0f18TPw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdpArT-jtGmL6xb6GQnNoCT5tAy1PUn_29xf1CxkcIHQ&s=10"
+        ],
+        vacunacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYe4AEZ4ucy8oF4MuGVQ_7fH1IT6uAMUAXyp0eylVDFQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToSmZ9LVVJBENQaLZzVQyv1E7s10ZWHVtgybimPNFnCg&s=10"
+        ],
+        veterinario: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq6qtNgB2dWfFN1yDSFS5BvVnRhHaKOKhPJJ882cEfJA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5kvFMSDrIN0eKnb136crbFvlyETR_S2ZLlOsN3r35xw&s=10"
+        ]
+      },
+      mainecoon: {
+        alimentacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_kal1xWKoIMvIR09JX-MklRc_4_uc3xM2lKqnKMUx7g&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkv3eS5fnRq0DhecfF19Fokb08Fu8N7ko5OOopnI_7Tw&s=10"
+        ],
+        salud: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbO8xUSfkDpW4DQ_sXLwNQ84VBwOREZ_qCo-T8PWQZGw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6oC_MDpZUTd6VubrOdu6MrnzXfCAhPMOPmB-OaACZZA&s=10"
+        ],
+        primeros: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM1j-HMbEA_OmDCk-R0t9VXvTCTT-FVv-KCe-vSvs76Q&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZjOUCXTtVdis_-qnm6c29YMsm0H4VC4Xe2-ivYrMh3Q&s=10"
+        ],
+        cuidados: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJwdfnNMKHR7CQ9ytHj4C8H-PSpMRf_ULKNWKjwVXzBA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBCufvhop-2Mq8vgRh9NHb-HZvQLM6laTK2hkt300nig&s=10"
+        ],
+        comportamiento: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQow7EjoKD9uqavQcRYdIdtLc3xKvEKooMA1hVjOl83Aw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVDGl9cnCMurk1l4IBJGCP7YjIwPOOSMOWqGw7EiqbZA&s=10"
+        ],
+        vacunacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDReyaiPqmJh22a1zpJ3zschzQ3InT-Ag07Lc9Jpc9vg&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8xw7mDJmMzg7l0xEgl_ThRmGAgve7cnaGItDZ9DPlHg&s=10"
+        ],
+        veterinario: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVswARg9FcCzUMH0cNsPYjNJFLe6PMJxrDzHVtGD1rvw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeCGqFQWg_VQWZ8yF8ozjjawapzKZJC3m9itxZzlC8ag&s=10"
+        ]
+      },
+      angora: {
+        alimentacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDnP80l14q5tBO-TwepLQNEdSwgu1Hh1B5XRjWdX-XVw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxmJ_e1EJjXeXlWm-_Hd8-8xHko1-sqYobQO-b4c_LBw&s=10"
+        ],
+        salud: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYjzxwJfS6uSDlb9mgxf5frsPbeNnqjH4IdMQHbG8ljA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJuD4NnkMsL2KUqKgh0Z-TIcMvv-xCM3G3lvFjOz7VLw&s=10"
+        ],
+        primeros: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRFXcTznj3y-IbxV_P-8pf33J5KnmnmkvlSIrx2aKIBQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBWyLEeRIn_ZxdVNzPeEUdh-zoGdh6cSlF2eUPZDgEsQ&s=10"
+        ],
+        cuidados: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRijez7Q12tx6rQf6NT0i0YuEUVyM2sSlkIl3oz3n8uPA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLjZ_mf8hxD-DurvpxAtcx88lNYkcd1qIRbj1YwTYO_w&s=10"
+        ],
+        comportamiento: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFHpj4UenAdbs_Rpr35Nn3xC1L0zV1QRZVaeZTmE3ktg&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTkq-YArjObL6TKpifNuIWTWOdDnsLUBQNq3XkFvgSpQ&s=10"
+        ],
+        vacunacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuzF080Ezt3IFR8FwsrwVrsuqU-jsCMXB_X9Y5bhB6bA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQUwlRgmyJE1EwzY3pOK03usNNBq9QA-eskR2Ly4CJiQ&s=10"
+        ],
+        veterinario: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuXhNuFDDJgXiDeD7bLdfwYUqRKLuDfK7lrIt_XiU79Q&s=10",
+          ""
+        ]
+      }
+    };
+
+    function obtenerClaveImagenRaza() {
+      return imagenesPorRaza[claveRazaActual] ? claveRazaActual : "criollo";
+    }
+
+    function cargarPerfil() {
+      const guardada = localStorage.getItem("patiMundoMascota");
+      if (!guardada) {
+        document.getElementById("descripcionPerfil").textContent = "Todavía no registraste una mascota.";
+        mostrarMensaje("Registra a tu gato en «Editar mascota» para consultar sus cuidados personalizados.");
+        return;
+      }
+
+      try {
+        mascotaActual = JSON.parse(guardada);
+        if (!mascotaActual || typeof mascotaActual !== "object") throw new Error("Los datos de la mascota no son válidos.");
+        const especie = normalizar(mascotaActual.especie);
+        if (especie === "perro") { window.location.replace("perro.html"); return; }
+        if (especie !== "gato") {
+          mostrarMensaje("No se reconoce la especie guardada. Revisa el registro de tu mascota.");
+          return;
+        }
+
+        const nombre = mascotaActual.nombre || mascotaActual.nombreMascota || "Mi gatito";
+        const raza = mascotaActual.categoria || mascotaActual.raza || mascotaActual.tipoRaza || mascotaActual.nombreRaza || "";
+        document.getElementById("nombrePerfil").textContent = nombre;
+        document.getElementById("categoriaPerfil").textContent = raza || "Raza no indicada";
+        document.getElementById("sexoPerfil").textContent = mascotaActual.sexo || "Sexo no indicado";
+
+        const etapa = obtenerEtapa(mascotaActual);
+        document.getElementById("edadPerfil").textContent = etapa ? etiquetasEtapa[etapa] : (mascotaActual.edad ?? "Etapa no indicada");
+        const foto = mascotaActual.foto || mascotaActual.fotoPerfil || mascotaActual.imagen;
+        if (foto) document.getElementById("fotoPerfil").src = foto;
+
+        datosActuales = encontrarRaza(raza);
+        if (!datosActuales) {
+          document.getElementById("descripcionPerfil").textContent = "No se encontró esta raza en la base de cuidados felinos.";
+          mostrarMensaje("No se encontró una coincidencia para la raza registrada. Revisa las cinco razas incluidas en cuidados-gatos.js.");
+          return;
+        }
+        if (!etapa) {
+          document.getElementById("descripcionPerfil").textContent = "No se pudo determinar la etapa de vida.";
+          mostrarMensaje("Indica una edad válida o selecciona una etapa reconocible: gatito, adulto o senior.");
+          return;
+        }
+        const registro = datosActuales.etapas?.[etapa];
+        if (!registro) {
+          document.getElementById("descripcionPerfil").textContent = "No hay información para esta raza y etapa.";
+          mostrarMensaje("La base de cuidados no contiene esta combinación de raza y etapa. No se mostrará información de otra etapa.");
+          return;
+        }
+        document.getElementById("descripcionPerfil").textContent =
+          "Consulta los cuidados disponibles para " + nombre + " en la etapa " + etiquetasEtapa[etapa].toLowerCase() + ".";
+        mostrarTema("alimentacion");
+      } catch (error) {
+        console.error("Error al cargar el perfil de la mascota:", error);
+        document.getElementById("descripcionPerfil").textContent = "No se pudieron leer los datos del perfil.";
+        mostrarMensaje("No se pudieron leer los datos guardados. Vuelve a registrar la mascota.");
+      }
+    }
+
+function mostrarTema(nombreTema) {
+  document.querySelectorAll(".care-card").forEach(boton => {
+    boton.classList.toggle("active", boton.dataset.tema === nombreTema);
+  });
+
+  if (!mascotaActual || !datosActuales) {
+    mostrarMensaje("Primero debes tener una mascota registrada y cargar su perfil.");
+    return;
+  }
+
+  const etapa = obtenerEtapa(mascotaActual);
+  const registro = etapa ? datosActuales.etapas?.[etapa] : null;
+  const tema = registro?.temas?.[nombreTema];
+
+  if (!tema) {
+    mostrarMensaje("Este tema no está disponible para la raza y etapa seleccionadas.");
+    return;
+  }
+
+  const panel = document.getElementById("contenidoTema");
+  panel.replaceChildren();
+
+  const titulo = document.createElement("h2");
+  titulo.textContent = tema.titulo || nombreTema;
+  panel.appendChild(titulo);
+
+  const secciones = Array.isArray(tema.secciones) ? tema.secciones : [];
+
+  if (secciones.length === 0) {
+    mostrarMensaje("Este tema todavía no tiene secciones disponibles para mostrar.");
+    return;
+  }
+
+  const iconosTema = {
+    alimentacion: "🥣",
+    salud: "🩺",
+    primeros: "🩹",
+    cuidados: "🐾",
+    comportamiento: "🎾",
+    vacunacion: "💉",
+    veterinario: "🏥",
+    descripcion: "🐱"
+  };
+
+  const razaImagen = obtenerClaveImagenRaza();
+  const imagenes = imagenesPorRaza[razaImagen]?.[nombreTema];
+
+  const primerosCinco = [
+    "alimentacion",
+    "salud",
+    "primeros",
+    "cuidados",
+    "comportamiento"
+  ];
+
+  const crearSeccion = (contenedor, seccion) => {
+    const bloque = document.createElement("section");
+    bloque.className = "care-info-section";
+
+    const subtitulo = document.createElement("h3");
+    subtitulo.textContent = seccion.titulo || "Información";
+    bloque.appendChild(subtitulo);
+
+    if (Array.isArray(seccion.items) && seccion.items.length > 0) {
+      const lista = document.createElement("ul");
+
+      seccion.items.forEach(texto => {
+        const elemento = document.createElement("li");
+        elemento.textContent = texto;
+        lista.appendChild(elemento);
+      });
+
+      bloque.appendChild(lista);
+    }
+
+    contenedor.appendChild(bloque);
+  };
+
+  const rejilla = document.createElement("div");
+  rejilla.className = "care-content-grid";
+
+  // DISEÑO DE LOS PRIMEROS CINCO BOTONES
+  if (primerosCinco.includes(nombreTema)) {
+
+    if (!imagenes || imagenes.length !== 2) {
+      mostrarMensaje("No se encontraron los dos enlaces de imágenes para esta raza y tema.");
+      return;
+    }
+
+    rejilla.classList.add("care-two-column-layout");
+
+    const mitad = Math.ceil(secciones.length / 2);
+
+    for (let columna = 0; columna < 2; columna++) {
+      const tarjeta = document.createElement("article");
+      tarjeta.className = "care-content-card care-image-column";
+
+      const imagen = document.createElement("img");
+      imagen.className = "care-card-image-large";
+      imagen.src = imagenes[columna];
+      imagen.alt = "Gato relacionado con " + nombreTema;
+      imagen.loading = "lazy";
+      imagen.decoding = "async";
+      imagen.addEventListener("error", () => imagen.remove(), { once: true });
+
+      tarjeta.appendChild(imagen);
+
+      const inicio = columna === 0 ? 0 : mitad;
+      const fin = columna === 0 ? mitad : secciones.length;
+
+      for (let i = inicio; i < fin; i++) {
+        crearSeccion(tarjeta, secciones[i]);
+      }
+
+      rejilla.appendChild(tarjeta);
+    }
+} else {
+  // DISEÑO ESPECIAL PARA VACUNACIÓN Y VETERINARIO
+
+  if (!imagenes || imagenes.length !== 2) {
+    mostrarMensaje("No se encontraron las dos imágenes para este tema.");
+    return;
+  }
+
+  rejilla.classList.add("care-special-layout");
+
+  // PRIMERA IMAGEN GRANDE
+  const tarjetaImagenSuperior = document.createElement("div");
+  tarjetaImagenSuperior.className = "care-special-image-card";
+
+  const imagenSuperior = document.createElement("img");
+  imagenSuperior.src = imagenes[0];
+  imagenSuperior.alt = "Gato relacionado con " + nombreTema;
+  imagenSuperior.className = "care-special-image";
+  imagenSuperior.loading = "lazy";
+  imagenSuperior.decoding = "async";
+  imagenSuperior.addEventListener("error", () => imagenSuperior.remove(), { once: true });
+
+  tarjetaImagenSuperior.appendChild(imagenSuperior);
+  rejilla.appendChild(tarjetaImagenSuperior);
+
+  // TARJETA CENTRAL CON TODA LA INFORMACIÓN
+  const tarjetaInformacion = document.createElement("article");
+  tarjetaInformacion.className = "care-content-card care-special-info";
+
+  secciones.forEach(seccion => {
+    const cabecera = document.createElement("div");
+    cabecera.className = "care-content-card-heading";
+
+    const icono = document.createElement("span");
+    icono.className = "care-content-card-icon";
+    icono.textContent = iconosTema[nombreTema] || "🐾";
+    icono.setAttribute("aria-hidden", "true");
+
+    const subtitulo = document.createElement("h3");
+    subtitulo.textContent = seccion.titulo || "Información";
+
+    cabecera.append(icono, subtitulo);
+    tarjetaInformacion.appendChild(cabecera);
+
+    if (Array.isArray(seccion.items) && seccion.items.length > 0) {
+      const lista = document.createElement("ul");
+
+      seccion.items.forEach(texto => {
+        const elemento = document.createElement("li");
+        elemento.textContent = texto;
+        lista.appendChild(elemento);
+      });
+
+      tarjetaInformacion.appendChild(lista);
+    }
+  });
+
+  rejilla.appendChild(tarjetaInformacion);
+
+  // SEGUNDA IMAGEN GRANDE
+  const tarjetaImagenInferior = document.createElement("div");
+  tarjetaImagenInferior.className = "care-special-image-card";
+
+  const imagenInferior = document.createElement("img");
+  imagenInferior.src = imagenes[1];
+  imagenInferior.alt = "Otra fotografía relacionada con " + nombreTema;
+  imagenInferior.className = "care-special-image";
+  imagenInferior.loading = "lazy";
+  imagenInferior.decoding = "async";
+  imagenInferior.addEventListener("error", () => imagenInferior.remove(), { once: true });
+
+  tarjetaImagenInferior.appendChild(imagenInferior);
+  rejilla.appendChild(tarjetaImagenInferior);
+}
+
+  panel.appendChild(rejilla);
+}
+
+    document.querySelectorAll(".care-card").forEach(boton => {
+      boton.addEventListener("click", () => mostrarTema(boton.dataset.tema));
+    });
+
+    cargarPerfil();
+  </script>
+</body>
+</html>

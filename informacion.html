@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Información y cuidados | PatiMundo</title>
+  <link rel="stylesheet" href="estilo.css">
+
+  <style>
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .brand-logo {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .info-hero {
+      padding: 3rem 1.5rem;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #e8f5ee, #fffaf2);
+      text-align: center;
+    }
+
+    .info-hero h1 {
+      margin: .7rem 0;
+      color: #24654f;
+    }
+
+    .info-hero p {
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .info-card {
+      padding: 1.4rem;
+      border: 1px solid rgba(44, 120, 91, .17);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 6px 20px rgba(35, 70, 52, .06);
+    }
+
+    .info-card h3 {
+      margin: .5rem 0;
+      color: #28664e;
+    }
+
+    .info-card p,
+    .info-card li {
+      line-height: 1.75;
+    }
+
+    .info-icon {
+      font-size: 2rem;
+    }
+
+    .info-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .info-actions a {
+      display: inline-block;
+      padding: .85rem 1.2rem;
+      border-radius: 12px;
+      background: #34866c;
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .info-actions a:hover {
+      background: #24654f;
+    }
+
+    .responsibility-panel {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border-left: 5px solid #34866c;
+      border-radius: 12px;
+      background: #e8f5ee;
+    }
+
+    .responsibility-panel h2 {
+      margin-top: 0;
+      color: #24654f;
+    }
+
+    @media (max-width: 600px) {
+      .info-hero {
+        padding: 2rem 1rem;
+      }
+
+      .info-card {
+        padding: 1.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="index.html" class="brand">
+      <img
+        class="brand-logo"
+        src="logo-patimundo.jpeg"
+        alt="Logo oficial de PatiMundo"
+      >
+      <span>🐾 Pati<span class="green">Mundo</span></span>
+    </a>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="perro.html">Perros</a>
+      <a href="gato.html">Gatos</a>
+      <a href="registro.html" class="nav-cta">Comenzar</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="info-hero">
+      <span class="eyebrow">CONOCER PARA CUIDAR 🐾</span>
+      <h1>Información y cuidados</h1>
+
+      <p>
+        En PatiMundo encontrarás recomendaciones para comprender mejor
+        las necesidades de perros y gatos, fomentar su bienestar y
+        acompañarlos responsablemente en cada etapa de su vida.
+      </p>
+
+      <div class="info-actions">
+        <a href="perro.html">Cuidados para perros</a>
+        <a href="gato.html">Cuidados para gatos</a>
+      </div>
+    </section>
+
+    <section class="section-wrap">
+      <span class="eyebrow">BIENESTAR ANIMAL</span>
+      <h2>Los cuidados que necesitan</h2>
+
+      <p>
+        Cada mascota es diferente. Su edad, condición física, entorno
+        y comportamiento deben tenerse en cuenta para ofrecerle una
+        atención apropiada.
+      </p>
+
+      <div class="info-grid">
+        <article class="info-card">
+          <div class="info-icon">🥣</div>
+          <h3>Alimentación equilibrada</h3>
+          <p>
+            Proporciona alimento adecuado para la especie y etapa de vida.
+            Mantén agua limpia disponible y consulta al veterinario cuando
+            necesites ajustar su alimentación.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="info-icon">🩺</div>
+          <h3>Prevención y salud</h3>
+          <p>
+            Los controles veterinarios, la vacunación y la prevención de
+            parásitos ayudan a proteger la salud de las mascotas. Las
+            indicaciones deben adaptarse a cada animal.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="info-icon">🧼</div>
+          <h3>Higiene y ambiente</h3>
+          <p>
+            Mantén limpios sus espacios, proporciona un lugar seguro para
+            descansar y realiza los cuidados de higiene que correspondan
+            a sus necesidades.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="info-icon">🎾</div>
+          <h3>Actividad y estimulación</h3>
+          <p>
+            El juego, el ejercicio apropiado y las actividades mentales
+            contribuyen al bienestar. Adapta la actividad a la edad,
+            condición física y características de tu mascota.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="info-icon">💚</div>
+          <h3>Respeto y buen trato</h3>
+          <p>
+            Aprende a reconocer sus señales de comunicación, respeta
+            sus momentos de descanso y utiliza métodos de aprendizaje
+            positivos, sin castigos físicos.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="info-icon">📋</div>
+          <h3>Registro de la mascota</h3>
+          <p>
+            Registrar los datos básicos de tu compañero facilita
+            identificar su perfil dentro de PatiMundo y consultar
+            la información disponible en las secciones correspondientes.
+          </p>
+          <a href="mascota.html">Registrar o editar mascota →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="responsibility-panel">
+      <h2>Una guía para acompañarte</h2>
+      <p>
+        PatiMundo tiene una finalidad educativa. La información de esta
+        página ofrece orientación general y no reemplaza una consulta,
+        un diagnóstico ni un tratamiento veterinario. Si tu mascota
+        presenta síntomas preocupantes o una emergencia, busca atención
+        veterinaria.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <strong>🐾 PatiMundo</strong>
+    <span>Cuidar también es una forma de amar.</span>
+  </footer>
+</body>
+</html>
+

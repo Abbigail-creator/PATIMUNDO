@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar mascota | PatiMundo</title>
+  <link rel="stylesheet" href="estilo.css">
+
+  <style>
+    .photo-preview {
+      width: 150px;
+      height: 150px;
+      margin: 12px auto;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #e8f5ee;
+      border: 4px solid #e8f5ee;
+    }
+
+    .photo-area {
+      padding: 20px;
+      border: 2px dashed #cbded1;
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .photo-area p {
+      margin-bottom: 12px;
+    }
+
+    .photo-area input {
+      max-width: 100%;
+    }
+
+    .radio-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding: 10px 0;
+    }
+
+    .radio-options label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+    }
+
+    .radio-options input {
+      accent-color: #34866c;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="index.html" class="brand">
+      <span>🐾 Pati<span class="green">Mundo</span></span>
+    </a>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="perro.html">Perros</a>
+      <a href="gato.html">Gatos</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="form-card">
+      <span class="eyebrow">Una nueva aventura comienza 🐶🐱</span>
+
+      <h1>Cuéntanos sobre tu <span class="green">mascota</span></h1>
+
+      <p class="form-description">
+        Cada mascota es única. Estos datos nos ayudarán a mostrarte información
+        más adecuada para su especie, raza y etapa de vida.
+      </p>
+
+      <form id="mascotaForm">
+        <div class="form-group">
+          <label for="nombreMascota">¿Cómo se llama?</label>
+
+          <input
+            type="text"
+            id="nombreMascota"
+            placeholder="Ej.: Boogie"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <span class="field-label">¿Es macho o hembra?</span>
+
+          <div class="radio-options">
+            <label>
+              <input type="radio" name="sexo" value="Macho" required>
+              Macho
+            </label>
+
+            <label>
+              <input type="radio" name="sexo" value="Hembra" required>
+              Hembra
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <span class="field-label">¿Qué mascota tienes?</span>
+
+          <div class="species-grid">
+            <label class="species-option">
+              <img
+                src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=500&q=85"
+                alt="Perro"
+              >
+
+              <input type="radio" name="especie" value="Perro" required>
+
+              <strong>🐶 Perro</strong>
+            </label>
+
+            <label class="species-option">
+              <img
+                src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=85"
+                alt="Gato"
+              >
+
+              <input type="radio" name="especie" value="Gato" required>
+
+              <strong>🐱 Gato</strong>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="raza">Raza o categoría</label>
+
+          <select id="raza" required disabled>
+            <option value="">Primero elige perro o gato</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="categoriaEdad">Etapa de vida de tu mascota</label>
+
+          <select id="categoriaEdad" name="categoriaEdad" required>
+            <option value="">Selecciona una etapa de vida</option>
+
+            <option value="Cachorro">
+              Cachorro (0–12 a 18 meses)
+            </option>
+
+            <option value="Adulto">
+              Adulto (1–2 años hasta los 9–10 años)
+            </option>
+
+            <option value="Senior o geriátrico">
+              Senior o geriátrico (10 años en adelante)
+            </option>
+          </select>
+
+          <p class="form-note">
+            Selecciona la etapa de vida que corresponda a tu mascota.
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label for="foto">Una foto de tu mascota (opcional)</label>
+
+          <div class="photo-area">
+            <img
+              id="vistaFoto"
+              class="photo-preview hidden"
+              alt="Vista previa de tu mascota"
+            >
+
+            <p>Elige una foto para personalizar su perfil.</p>
+
+            <input
+              type="file"
+              id="foto"
+              accept="image/*"
+            >
+          </div>
+        </div>
+
+        <div id="mensaje" class="message hidden" role="status"></div>
+
+        <div class="form-actions">
+          <a href="registro.html" class="button-secondary">← Volver</a>
+          <button type="submit" class="button">Crear perfil →</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <strong>🐾 PatiMundo</strong>
+    <span>Cuidar también es una forma de amar.</span>
+  </footer>
+
+  <script>
+    const formulario = document.getElementById("mascotaForm");
+    const selectorRaza = document.getElementById("raza");
+    const selectorCategoriaEdad = document.getElementById("categoriaEdad");
+    const entradaFoto = document.getElementById("foto");
+    const vistaFoto = document.getElementById("vistaFoto");
+    const mensaje = document.getElementById("mensaje");
+
+    const categorias = {
+      Perro: [
+        "K'ala / perro sin pelo boliviano",
+        "Chapi",
+        "Mestizo",
+        "Criollo",
+        "Pinscher",
+        "Labrador Retriever",
+        "Golden Retriever",
+        "Pastor Alemán",
+        "Chihuahua"
+      ],
+
+      Gato: [
+        "Gato doméstico / criollo",
+        "Siamés",
+        "Persa",
+        "Maine Coon",
+        "Angora"
+      ]
+    };
+
+    let fotoData = "";
+
+    // Mostrar las razas según la especie elegida.
+    document.querySelectorAll('input[name="especie"]').forEach(function(radio) {
+      radio.addEventListener("change", function() {
+        const especie = radio.value;
+
+        selectorRaza.innerHTML =
+          '<option value="">Selecciona una raza o categoría</option>';
+
+        categorias[especie].forEach(function(nombre) {
+          const opcion = document.createElement("option");
+          opcion.value = nombre;
+          opcion.textContent = nombre;
+          selectorRaza.appendChild(opcion);
+        });
+
+        selectorRaza.disabled = false;
+      });
+    });
+
+    // Mostrar la vista previa de la foto.
+    entradaFoto.addEventListener("change", function() {
+      const archivo = entradaFoto.files[0];
+
+      fotoData = "";
+      vistaFoto.removeAttribute("src");
+      vistaFoto.classList.add("hidden");
+
+      if (!archivo) return;
+
+      if (!archivo.type.startsWith("image/")) {
+        mostrarMensaje("Selecciona un archivo de imagen válido.", true);
+        entradaFoto.value = "";
+        return;
+      }
+
+      if (archivo.size > 3 * 1024 * 1024) {
+        mostrarMensaje("La foto debe pesar menos de 3 MB.", true);
+        entradaFoto.value = "";
+        return;
+      }
+
+      const lector = new FileReader();
+
+      lector.onload = function(evento) {
+        fotoData = evento.target.result;
+        vistaFoto.src = fotoData;
+        vistaFoto.classList.remove("hidden");
+        mostrarMensaje("", false);
+      };
+
+      lector.onerror = function() {
+        mostrarMensaje(
+          "No se pudo leer la foto. Prueba con otra imagen.",
+          true
+        );
+      };
+
+      lector.readAsDataURL(archivo);
+    });
+
+    // Mostrar mensajes del formulario.
+    function mostrarMensaje(texto, esError) {
+      mensaje.textContent = texto;
+
+      mensaje.className = texto
+        ? (esError ? "message error" : "message")
+        : "message hidden";
+    }
+
+    // Guardar los datos de la mascota.
+    formulario.addEventListener("submit", function(evento) {
+      evento.preventDefault();
+
+      const usuarioGuardado = localStorage.getItem("patiMundoUsuario");
+
+      if (!usuarioGuardado) {
+        mostrarMensaje(
+          "Primero completa el registro de tus datos.",
+          true
+        );
+        return;
+      }
+
+      const nombre = document.getElementById("nombreMascota").value.trim();
+      const sexo = document.querySelector('input[name="sexo"]:checked');
+      const especie = document.querySelector('input[name="especie"]:checked');
+      const raza = selectorRaza.value;
+      const categoriaEdad = selectorCategoriaEdad.value;
+
+      if (!nombre || !sexo || !especie || !raza || !categoriaEdad) {
+        mostrarMensaje(
+          "Completa el nombre, sexo, especie, raza y etapa de vida.",
+          true
+        );
+        return;
+      }
+
+      const mascota = {
+        nombre: nombre,
+        sexo: sexo.value,
+        especie: especie.value,
+        categoria: raza,
+        categoriaEdad: categoriaEdad,
+        foto: fotoData
+      };
+
+      try {
+        localStorage.setItem(
+          "patiMundoMascota",
+          JSON.stringify(mascota)
+        );
+
+        window.location.href = especie.value === "Perro"
+          ? "perro.html"
+          : "gato.html";
+
+      } catch (error) {
+        mostrarMensaje(
+          "No se pudieron guardar los datos. Prueba con una foto más pequeña.",
+          true
+        );
+      }
+    });
+  </script>
+</body>
+</html>
+
+

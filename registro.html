@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro | PatiMundo</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="brand">
+      <span>🐾 Pati<span class="green">Mundo</span></span>
+    </a>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="perro.html">Perros</a>
+      <a href="gato.html">Gatos</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="form-card">
+      <span class="eyebrow">¡Empecemos! 🐾</span>
+      <h1>Tu espacio en <span class="green">PatiMundo</span></h1>
+      <p class="form-description">
+        Primero necesitamos algunos datos para personalizar la experiencia en PatiMundo.
+      </p>
+
+      <form id="registroForm">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            placeholder="Escribe tu nombre"
+            autocomplete="given-name"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <input
+            type="text"
+            id="apellido"
+            name="apellido"
+            placeholder="Escribe tu apellido"
+            autocomplete="family-name"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="correo">Correo electrónico</label>
+          <input
+            type="email"
+            id="correo"
+            name="correo"
+            placeholder="ejemplo@correo.com"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div id="mensaje" class="message hidden" role="status"></div>
+
+        <button type="submit" class="button" style="width:100%">
+          Continuar <span>→</span>
+        </button>
+
+        <p class="form-note">
+          Tus datos se utilizarán para personalizar tu experiencia en esta demostración.
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <strong>🐾 PatiMundo</strong>
+    <span>Cuidar también es una forma de amar.</span>
+  </footer>
+
+  <script>
+    const formulario = document.getElementById("registroForm");
+    const mensaje = document.getElementById("mensaje");
+
+    formulario.addEventListener("submit", function(evento) {
+      evento.preventDefault();
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const apellido = document.getElementById("apellido").value.trim();
+      const correo = document.getElementById("correo").value.trim();
+
+      if (!nombre || !apellido || !correo) {
+        mensaje.textContent = "Por favor, completa todos los campos.";
+        mensaje.className = "message error";
+        return;
+      }
+
+      const usuario = {
+        nombre: nombre,
+        apellido: apellido,
+        correo: correo
+      };
+
+      try {
+        localStorage.setItem("patiMundoUsuario", JSON.stringify(usuario));
+        window.location.href = "mascota.html";
+      } catch (error) {
+        mensaje.textContent =
+          "No se pudieron guardar los datos en este navegador. Intenta nuevamente.";
+        mensaje.className = "message error";
+      }
+    });
+  </script>
+</body>
+</html>

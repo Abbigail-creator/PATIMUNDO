@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi perro | PatiMundo</title>
+  <link rel="stylesheet" href="estilo.css">
+
+  <style>
+    #contenidoTema > h2 {
+  margin-bottom: 1.2rem;
+}
+
+/* Distribución general en dos columnas */
+.care-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.care-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+/* Tarjetas independientes para las fotografías */
+.care-photo-card {
+  width: 100%;
+  padding: .65rem;
+  border: 1px solid rgba(44, 120, 91, .17);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(35, 70, 52, .08);
+  overflow: hidden;
+}
+
+.care-photo-frame {
+  width: 100%;
+  height: 245px;
+  overflow: hidden;
+  border-radius: 13px;
+  background: #e8f5ee;
+}
+
+.care-topic-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 13px;
+}
+
+/* Tarjetas de información */
+.care-content-card {
+  min-width: 0;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid rgba(44, 120, 91, .17);
+  border-radius: 18px;
+  background: linear-gradient(145deg, #ffffff, #f7fbf6);
+  box-shadow: 0 6px 20px rgba(35, 70, 52, .06);
+  overflow-wrap: anywhere;
+}
+
+.care-content-card-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+  margin-bottom: .85rem;
+}
+
+.care-content-card-icon {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 2.35rem;
+  height: 2.35rem;
+  border-radius: 12px;
+  background: #e9f5eb;
+  font-size: 1.25rem;
+}
+
+.care-content-card h3 {
+  margin: .25rem 0 0;
+  color: #28664e;
+  font-size: 1.02rem;
+  line-height: 1.4;
+}
+
+.care-content-card ul {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.care-content-card li {
+  margin: 0 0 .75rem;
+  line-height: 1.72;
+  overflow-wrap: anywhere;
+}
+
+.care-content-card li:last-child {
+  margin-bottom: 0;
+}
+
+.care-message {
+  padding: 1rem;
+  border-radius: 12px;
+  background: #f7fbf6;
+  line-height: 1.6;
+}
+
+@media (max-width: 650px) {
+  .care-two-column-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* DISEÑO ESPECIAL: VACUNACIÓN Y VETERINARIO */
+
+.care-special-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.care-special-image-card {
+  width: 100%;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #dcebe2;
+  border-radius: 19px;
+  box-shadow: 0 5px 18px rgba(35, 70, 52, .08);
+  box-sizing: border-box;
+}
+
+.care-special-image {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 13px;
+}
+
+.care-special-info {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.2rem;
+}
+
+.care-special-info ul {
+  padding-left: 1.2rem;
+}
+
+.care-special-info li {
+  margin-bottom: .75rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .care-special-image {
+    height: 175px;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="index.html" class="brand">
+      🐾 Pati<span class="green">Mundo</span>
+    </a>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="gato.html">Gatos</a>
+      <a href="información.html">Información</a>
+      <a href="mascota.html" class="nav-cta">Editar mascota</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="profile-header">
+      <img
+        id="fotoPerfil"
+        class="profile-photo"
+        src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=400&q=80"
+        alt="Foto de tu perro"
+      >
+
+      <div class="profile-info">
+        <span class="eyebrow">MI COMPAÑERO DE AVENTURAS 🐾</span>
+
+        <h1 id="nombrePerfil">Mi perrito</h1>
+
+        <div class="profile-tags">
+          <span class="profile-tag" id="categoriaPerfil">Raza no indicada</span>
+          <span class="profile-tag" id="edadPerfil">Etapa no indicada</span>
+          <span class="profile-tag" id="sexoPerfil">Sexo no indicado</span>
+        </div>
+
+        <p id="descripcionPerfil">
+          Registra a tu perro para ver sus cuidados personalizados.
+        </p>
+      </div>
+    </section>
+
+    <section class="care-section">
+      <span class="eyebrow">GUÍA DE CUIDADOS</span>
+      <h2>¿Qué necesitas saber hoy?</h2>
+      <p>Elige un tema para consultar los cuidados de tu perro.</p>
+
+      <div class="care-grid" id="careGrid">
+        <button type="button" class="care-card active" data-tema="alimentacion">
+          <span class="care-icon">🥣</span>
+          <h3>Alimentación</h3>
+          <p>Alimentación saludable y no saludable.</p>
+        </button>
+
+        <button type="button" class="care-card" data-tema="salud">
+          <span class="care-icon">🩺</span>
+          <h3>Salud</h3>
+          <p>Señales de buena y mala salud.</p>
+        </button>
+
+        <button type="button" class="care-card" data-tema="primeros">
+          <span class="care-icon">🩹</span>
+          <h3>Primeros auxilios</h3>
+          <p>Qué hacer ante accidentes.</p>
+        </button>
+
+        <button type="button" class="care-card" data-tema="cuidados">
+          <span class="care-icon">🛁</span>
+          <h3>Cuidados</h3>
+          <p>Cómo mantenerlo bien cuidado.</p>
+        </button>
+
+        <button type="button" class="care-card" data-tema="comportamiento">
+          <span class="care-icon">🐕</span>
+          <h3>Comportamiento</h3>
+          <p>Adiestramiento y conducta.</p>
+        </button>
+
+        <button type="button" class="care-card" data-tema="vacunacion">
+          <span class="care-icon">💉</span>
+          <h3>Vacunación</h3>
+          <p>Información sobre vacunas.</p>
+        </button>
+
+        <button type="button" class="care-card" data-tema="veterinario">
+          <span class="care-icon">🏥</span>
+          <h3>Cuándo ir al veterinario</h3>
+          <p>Situaciones que requieren atención.</p>
+        </button>
+      </div>
+    </section>
+
+    <section class="info-panel" id="contenidoTema" aria-live="polite">
+      <h2>🥣 Alimentación</h2>
+      <p>Selecciona una mascota registrada para ver su información.</p>
+    </section>
+
+    <section class="info-panel">
+      <p class="form-note">
+        Esta guía es educativa y no sustituye la evaluación de un veterinario.
+        Ante una emergencia, contacta a un profesional veterinario.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <strong>🐾 PatiMundo</strong>
+    <span>Cuidar también es una forma de amar.</span>
+  </footer>
+
+  <!-- Conexión original -->
+  <script src="cuidados-perros.js"></script>
+
+  <script>
+    "use strict";
+
+    const etiquetasEtapa = {
+      cachorro: "Cachorro",
+      adulto: "Adulto",
+      senior: "Senior o geriátrico"
+    };
+
+    let mascotaActual = null;
+    let datosActuales = null;
+    let claveRazaActual = "";
+
+    function normalizar(valor) {
+      return String(valor ?? "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "");
+    }
+
+    function obtenerBaseDatos() {
+      return window.PATIMUNDO_CUIDADOS_PERROS || {};
+    }
+
+    function encontrarRaza(raza) {
+      const base = obtenerBaseDatos();
+      const nombreBuscado = normalizar(raza);
+
+      if (!nombreBuscado) return null;
+
+      const equivalencias = {
+        kala: "kala",
+        kalaperrosinpeloboliviano: "kala",
+        perrosinpelo: "kala",
+        perrosinpeloboliviano: "kala",
+        chapi: "chapi",
+        mestizo: "mestizo",
+        criollo: "criollo",
+        pinscher: "pinscher",
+        labrador: "labradorretriever",
+        labradorretriever: "labradorretriever",
+        golden: "goldenretriever",
+        goldenretriever: "goldenretriever",
+        pastoraleman: "pastoraleman",
+        chihuahua: "chihuahua"
+      };
+
+      const objetivo = equivalencias[nombreBuscado] || nombreBuscado;
+
+      let clave = Object.keys(base).find(nombre =>
+        normalizar(nombre) === objetivo
+      );
+
+      if (!clave) {
+        clave = Object.keys(base).find(nombre => {
+          const nombreBase = normalizar(base[nombre]?.nombre || "");
+          return nombreBase === nombreBuscado || nombreBase === objetivo;
+        });
+      }
+
+      if (clave) {
+        claveRazaActual = normalizar(clave);
+        return base[clave];
+      }
+
+      return null;
+    }
+
+    function obtenerEtapa(mascota) {
+      const etapaTexto = normalizar(
+        mascota.categoriaEdad ??
+        mascota.etapa ??
+        mascota.etapaVida ??
+        mascota.categoriaEtapa ??
+        ""
+      );
+
+      if (etapaTexto.includes("cachorro")) return "cachorro";
+
+      if (
+        etapaTexto.includes("senior") ||
+        etapaTexto.includes("geriatrico") ||
+        etapaTexto.includes("anciano")
+      ) {
+        return "senior";
+      }
+
+      if (etapaTexto.includes("adulto")) return "adulto";
+
+      const edadTexto = String(mascota.edad ?? "").trim();
+      const coincidencia = edadTexto.match(/\d+(?:[.,]\d+)?/);
+
+      if (!coincidencia) return null;
+
+      const edad = Number(coincidencia[0].replace(",", "."));
+
+      if (!Number.isFinite(edad) || edad < 0) return null;
+
+      const edadEnMeses = /mes(?:es)?/i.test(edadTexto);
+      const edadEnAnios = edadEnMeses ? edad / 12 : edad;
+
+      if (edadEnAnios < 1) return "cachorro";
+      if (edadEnAnios >= 10) return "senior";
+
+      return "adulto";
+    }
+
+    function mostrarMensaje(mensaje) {
+      const panel = document.getElementById("contenidoTema");
+      panel.replaceChildren();
+
+      const texto = document.createElement("p");
+      texto.className = "care-message";
+      texto.textContent = mensaje;
+
+      panel.appendChild(texto);
+    }
+
+    /*
+      126 ENLACES DE IMÁGENES
+      9 razas x 7 temas x 2 imágenes.
+
+      Puedes reemplazar cualquier URL por otra fotografía.
+    */
+
+    const imagenesPorRaza = {
+
+      kala: {
+        alimentacion: [
+          "https://patitasco.com/img/ybc_blog/post/Portada-perros-sin-pelo.jpg",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfEXtmggEj61oO0VbNceLaFNuqGoIuszLDZmnNl5lCpA&s=10"
+        ],
+        salud: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk4b-1rK7X6K4xnsVBDgRoaoFOeOe_4odq84XYthPs0A&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1VqJKnE7m5_ljkYdD4jj5Ove52_DBezb90AOFB6lEtA&s=10"
+        ],
+        primeros: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPGXgfmWGTzImikiY_3nO66afqXioF1RXclVNts9je7Q&s=10",
+          "https://www.tiendanimal.es/articulos/wp-content/uploads/2015/09/como-curar-una-herida-a-un-perro.jpg"
+        ],
+        cuidados: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCyRAJbC6F4LjO80hSgpEwekFfN6ZsY9ayR-0StQIsxYMX4fRENv_BshSG&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQba4ZLys4WEqVYJYcZ_EM3hHvcJN19PKoZvWhwBQpqUQ&s=10"
+        ],
+        comportamiento: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiK-dG2elAn0orNA9qaXt1c8hBU7DqB7l9V1Fa4kcDfQ&s=10",
+          "https://verdecora.es/blog/wp-content/uploads/2025/05/perro-peruano.jpg"
+        ],
+        vacunacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuz5GF8cUh31zH64W-pqD53cFAVJdaqzHVnkb60cncEw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4OAD8V5xWgqgcJPrnIKSjHR9UxDR-Ikd77qkCCMlzAA&s=10"
+        ],
+        veterinario: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmJeWKwnh9EXlkeGLcQk9okj0h2zwI6RBlLhvRHLkEYQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx_3FtZq22n8VH-2PAg6ZDIyWDfEZm6Edc92AvWoGPAA&s=10"
+        ]
+      },
+
+      chapi: {
+        alimentacion: [
+          "https://thumbs.dreamstime.com/b/perro-de-pelo-rizado-comiendo-comida-un-cuenco-acero-inoxidable-362131112.jpg",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROXkoxs0MWXlAc8ma0czx76qLIaYd_28CFrOvYaL1QoQ&s=10"
+        ],
+        salud: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs-b2X4ByYvA_XKyrYmb34ucUY9xd6dNrvfozLoDoNdg&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4SlmqNwARC39dhiPxcdo4PhsjreGp_6IF1RLpLauz2A&s=10"
+        ],
+        primeros: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4OLa7okPIa_ytMaohe_mT4t93hagYzDqve7xKTUjs-w&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT46h8OcSKkjrETBM5UH-DKZSw79GKlE20jqrUoktr10Q&s=10"
+        ],
+        cuidados: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkFm6elmb58JXRbpmX64EohbFQT0cHE4sIOuKH2a-VWw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRojGRV64wUH04NIlifEJoCmcI2TQxLvWj7J9LV59PL-A&s=10"
+        ],
+        comportamiento: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtjbO1rNVGdYyqmgW8SMgDKsoiVudOrR2PjOiMJfQ3RA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvH_UBTcNpKsyn58gLIV6K6BYMvBrxKcOoR8DDkzhIhQ&s=10"
+        ],
+        vacunacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsmNlMeTHJ1D8untiMhAQimthDkfNagiWW6PdYf1wsOQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPoO_fUTgd3gpLahXu6cq0Qp4iMtAD4rvoxasjByfwpw&s=10"
+        ],
+        veterinario: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLII9QM2Dymjq5oqJCz6pIaZGAO-A-b6eZxXUursuuyQ&s",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaDJ_OdsnmJBmkYsPQDJRcEK5MGNwnmYR_QRSQO1UrKA&s=10"
+        ]
+      },
+
+      mestizo: {
+        alimentacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1zkayHNPJAvi7T3qp_x0eVFC8se26pKnVNjD6V2R8ew&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxdxY4jfJzc5Hyl1XSRyXLqw1L-mdI0hTQ6_a7pY1e2g&s=10"
+        ],
+        salud: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsvtDJod4PSvNUe5rkSj9faKC0MGcvgJGxCMhHz81mQw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBdkkHKBU262GTdVIw4GjhE7eEIz2M9kdew9EZxdoSzA&s=10"
+        ],
+        primeros: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkmgGllKfPPfQBIgB4e_3RoziztnR-hYhfV-Ukbxa6vQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp_UWawp3jQQRTWE3yNKuWSFY_1PEYzAbs0FwUxENktg&s=10"
+        ],
+        cuidados: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgwqjmsbhWW6iZ9PL8kAyANOY04ew4k-wwNNOPCyAc4A&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS11pe4RFGxejK5Q2h444jYf31rrHrbQV0xBgSN9sU0oQ&s=10"
+        ],
+        comportamiento: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzdgSka0MjdKwppb_dpMNnnkTJJMnzqMIUOL-UNVUXLQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPksv8rFTqoVLrgPX9KVhx64UgCYKzcxOwmaFu0IN5A&s=10"
+        ],
+        vacunacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQabwMbP8jg_vckqx18HakYOxAhMXxzT54R6h7Q-vEjvA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRaVVL3m0QwAR5t4Iiokv3vgOJyn5Xif4yNTPJ8rhB1w&s=10"
+        ],
+        veterinario: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvr9HmkUIokltQ3sLjBYUVBDM0XjwYTvpDHeG1H13i_w&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSToeqKQnmGM8VNEjJnxnKncF85QhweUC0t8SlMpM5QWQ&s=10"
+        ]
+      },
+
+      criollo: {
+        alimentacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwnoTccqKG6R-J_uezXnAj9GRKq3zBryPJb3HgXh9Rpw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQYxB_Y-9JwbR-NISzd-8gAHJ1aXte-Tbk_x8REvEIcg&s=10"
+        ],
+        salud: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVs3XwRlmDPnThd7v4tDiK0clGiK381L-S_3p_l4iKbQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpQczre3r_WEPKMSOUusvGBhERiYkuXnYGyQDJBN_JWg&s=10"
+        ],
+        primeros: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA12XznBUV8uyOvn5-3wvdeRlXzOZwFQKgkV17rG3Fxw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNF_ABO7cEGK-ayu0PZpoI3DDf2qwJqVng4fgV8jU4LQ&s=10"
+        ],
+        cuidados: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY-dPUKokMhtco2cHxCQOPuF_VCdJ1ZIrDDKsbh9YcmQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtoevt6p2t60DWroUjKNNbOjEqFc1rQqhZCL96o00E0w&s=10"
+        ],
+        comportamiento: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5HAl-FPX4qOhsr_2A6uTk5ow-cYS2g4uDfAasGhfNCw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwnoTccqKG6R-J_uezXnAj9GRKq3zBryPJb3HgXh9Rpw&s=10"
+        ],
+        vacunacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz_Ia3X0BvAw3oNfo9lQrT2EruwRc6naOTg4fxXidTRw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDUEHUGbqkKu_Imqaf8r_LGsJncY64_ptWax4COG9Mfg&s=10"
+        ],
+        veterinario: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmtjyDOluNd_J6nEupSYZknTyaVMsB4rWbJ6vGBrq_bg&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREvW3iNOsRiE8Ut5UombaE1_74_fdFClbRwZd5psn9GA&s=10"
+        ]
+      },
+
+      pinscher: {
+        alimentacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUWj67I6PPKLf2N72IQ7gJKipvzppVT91afUOW-msU_A&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRubCuMBijKMoWfKkIXf_sNE8k2kF3k_Rl2Z2_Wnn-2Hw&s=10"
+        ],
+        salud: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvAd74a72OMyhWQQk60SyYINK0s-kdVnd5bt3M-CF44g&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaLGDyr49C8bIZgdNm08SsPuAtQdr-WsyshyjEp4mQ8Q&s=10"
+        ],
+        primeros: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtMqGVPAMZLhaw2aZJOcVCSQkrFjtNYVvK4M7e4c7l6Q&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQorBlmVm4E7HD1gESg0R2BxP7AOjymoS3OyKtLafDBTw&s=10"
+        ],
+        cuidados: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxN3BOA-90h8JThXSKwjELYbDNl9ddCoWaTle2_tuRqQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJDDtag0obGOyb91YTm7zzy8x1IDpzJx467Gu7cJAS4g&s=10"
+        ],
+        comportamiento: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZLIXqYleeZYRVBSv-20gO_AtVjNUScmkNsEZiCZjaVA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFZoWeqIrjM4FQk4ceEZmc4dfeQDQkdQ6Ok6lyP4UxTQ&s=10"
+        ],
+        vacunacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsmNlMeTHJ1D8untiMhAQimthDkfNagiWW6PdYf1wsOQ&s=105",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0xZ9WJjgA1WZk103CbVPzAIEOHhKo_WK9GbGCJV-6kw&s=10"
+        ],
+        veterinario: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT02gmyO6PDXZXomGpzXdQ5sU1KCi30orxa-6ALKeGuCw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbjt3NDd-DrbZUSfQjkIHx3JVtA-eFZ6ZBGs4iXeD4Tw&s=10"
+        ]
+      },
+
+      labradorretriever: {
+        alimentacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2dUM8vj2efS07E7OjLO0WXmc0qzR7pRehny16BrRs8Q&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2NXBWFX7bPBGSc97lmgzrE5z4GMEixY12YFjwWLnOZw&s=10"
+        ],
+        salud: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwfV-uOshaiLXnvGoqplfTZvXG49Q9EPmuufc_Bo_K7A&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIGIrxwhHewy1w5sdVHj5SmO6ssPx79SJLyZyOblha3Q&s"
+        ],
+        primeros: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR40uQUv_sWFh2M5wfQeYpDYnP-FUUpKaK2YNo8JQb1Ew&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGvDMg0yrr82Q7jRHLxR1Mj_bRvkcIhMaD7t84UBGWTg&s=10"
+        ],
+        cuidados: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCNxrLMqkOZARd9Q-c47n2fqOmiS_ERZ_OUC1fltbAnQ&s",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZPIsKmbrZqJwlKUxy_csKxLwCYrWtkFw69pSpt5Fmtw&s=10"
+        ],
+        comportamiento: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4_Li3QWKHf9o5qVD48pCUR67sjAgraLVS3iBgtwGifQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbBgYL_rpp7Nax2qZbQoj4Oe8UHtz9lEUEdNYfYiq9BA&s=10"
+        ],
+        vacunacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuz5GF8cUh31zH64W-pqD53cFAVJdaqzHVnkb60cncEw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgNTn1fn6ha-YpGZfRAfSu6JQmhHZ-vzWI-Cg7tcokJw&s=10"
+        ],
+        veterinario: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZXnnpMuPWv1Di8poEnfL5znqv8yTwfTmgDgjKCDJM0Q&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUVlGqG14VFwuxah9cfavQ4XlC4Sj2PPYbbMDK3bZS9A&s=10"
+        ]
+      },
+
+      goldenretriever: {
+        alimentacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREsex4f2zI9003KqT376wGH6Df40uFJO4oQLeSz35wcQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfqB9fnnj7LaRnXhGs67gC65E_dMZGdYTrf8Rv4oYJGQ&s=10"
+        ],
+        salud: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBdSlCOJEPKYCx3a9HVzfj8O7U8sUmjaRDpeHLcPUqyg&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsMKjZz6rTyKFpHdiWfsdgGZaAIYk_utNsWeyIguY1RA&s=10"
+        ],
+        primeros: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpqP-9ljg44ZVZGJoX2BF_k2oLw4UiPpoNXJis1fm_Rg&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSiZi9iMbYZTbbfjCzJWoAzjT3Jgyp_9WKw0Kn3X9-qg&s=10"
+        ],
+        cuidados: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdkXvn7sov-MkNanRYKs9MNzFP8lGJS6ptpgqj7lTrZg&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWyUFEypL9TQLkQVZbGMNrODpDLXoEI8HZnJyRiUYhkA&s=10"
+        ],
+        comportamiento: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe1mLcW_M8xRI0J5UcnG6soPw9kd8XQOgz7Y4sOLFZoA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBdSlCOJEPKYCx3a9HVzfj8O7U8sUmjaRDpeHLcPUqyg&s=10"
+        ],
+        vacunacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFsRkuRqJCkSq-y5cmXtXeg33cnGZiBtcqr3euXcQteA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQySk_Qas2Iqe13kasSxVbp0oh2Owbw0PhxhPfHN-hCQA&s=10"
+        ],
+        veterinario: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLg0jc9Q3nn4jjmHcBDJ01nipDIypDoEZQzwrLqN-3eA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9so63oWn7TKM9beTp9JyMseFWDARGP5ELA-WaKtTpoA&s=10"
+        ]
+      },
+
+      pastoraleman: {
+        alimentacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjDZkM8EysNVfAh97w3rOpsFI0C6Oypc9_GxqGpcZMRw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb1W5qq-3iyffgeSzKcP7KFUd_zquo50cYwiZ5ZWPaCA&s=10"
+        ],
+        salud: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFH-LBD5p-uO3FXMCEa_AekFO3wpzXfF65-mr5Iofncw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ASYxnidI1nVv6DDUIEhUaAOM1YO-2lDEg6y4ayJV2Q&s=10"
+        ],
+        primeros: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDStTFrIoG1DIGIKVh-9tOWVFnqDFr0gWyPAIqgCJQ6g&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7BK0FuB-WvwdV_P-rlho5kfm3MzuXBEhYjnePOJbfUQ&s=10"
+        ],
+        cuidados: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHlg_Z1DNYklX8LzCNlBPtpboRPVwFaz3PE2d3Yhz1gQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYnmlw46NaFZ5VhiG8rWEvuFbO5wUFFRi-KN-bJOE86g&s=10"
+        ],
+        comportamiento: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW4XzYUKmWrv6GPBNlqXl88kLzBZhZFsXmogRQ9cO8lQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRnBp-PvnH9HULexFhiKJFb_lukX9Z8gkvscyVoL7bWQ&s=10"
+        ],
+        vacunacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEs8QJlBx6UOl_6wuu_lAmzEUf-StVL4W5U8gytDwrnw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiidw30Y50PfBiqZ_XP7UPiDSr45onlFoOuuVYGB1TLg&s=10"
+        ],
+        veterinario: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwd9omKhd_PHp8T3p6EyHKN2wSpqwdVl8JyhB933GLlA&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6S7SMrKpvUT2ZVUoSkyzvYhJygF7dMtOKTcWxxIVvdA&s"
+        ]
+      },
+
+      chihuahua: {
+        alimentacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzRYuIW3ZMV3d3rs8yWqHp6YdA3mpJk2BlEpScN53IWg&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKzY48sd7MxiRww96V-zcCdBS464g7WETdn3dUpv1m2Q&s=10"
+        ],
+        salud: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlY9Tbmr8rCPvaaAPPB0mVug-wgzKl2HvS4pQDwJ9sxQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0ma4yTaE_T0lC2t8906PnfxVA658gdpLchtZxD9zr_w&s=10"
+        ],
+        primeros: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ64KT5_WYrskFm-Nh6b2GyrY2bBv1BswrSxPlg-enXCw&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTseEHbEtZKHmlMGu20-wzHwtslzFN9cn8wA_4vPkQ1Cg&s=10"
+        ],
+        cuidados: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfokeBAohhHk9YbOI5PZtSyIfK9buaoLcAE5dAa1c4_A&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1VYmFmixR5lhvBcKMN4jZPFIB_s35hTEc8k-R88lKxA&s=10"
+        ],
+        comportamiento: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx4KQbFv-0O3Z7LdHHxdk8iqnMSfayu0DU7HJCc9bhng&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTQejUHIxcAjF2BfWlFAH_yJF4xFh_lioGrK-80EZAIg&s=10"
+        ],
+        vacunacion: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsmNlMeTHJ1D8untiMhAQimthDkfNagiWW6PdYf1wsOQ&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROV6PLp3WG9kP4jADnuD_iWoz-J2qlQRMQ8vQqTAdAiA&s=10"
+        ],
+        veterinario: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRu8xPaq3e6__rgk8tP4Y17GsdrxGKvuGYfs6U3eQ5GlE8-P4igMqLpso&s=10",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm4fifJkMnqWpWHWCL8D4YLzHhfcH6IzyJ_y0niI4S3g&s=10"
+        ]
+      }
+    };
+
+    function obtenerClaveImagenRaza() {
+      const equivalencias = {
+        kala: "kala",
+        kalaperrosinpeloboliviano: "kala",
+        perrosinpelo: "kala",
+        perrosinpeloboliviano: "kala",
+        chapi: "chapi",
+        mestizo: "mestizo",
+        criollo: "criollo",
+        pinscher: "pinscher",
+        labrador: "labradorretriever",
+        labradorretriever: "labradorretriever",
+        golden: "goldenretriever",
+        goldenretriever: "goldenretriever",
+        pastoraleman: "pastoraleman",
+        chihuahua: "chihuahua"
+      };
+
+      return equivalencias[claveRazaActual] || claveRazaActual;
+    }
+function crearTarjetaFoto(url, textoAlternativo) {
+  const tarjeta = document.createElement("div");
+  tarjeta.className = "care-photo-card";
+
+  const marco = document.createElement("div");
+  marco.className = "care-photo-frame";
+
+  const imagen = document.createElement("img");
+  imagen.className = "care-topic-image";
+  imagen.src = url;
+  imagen.alt = textoAlternativo;
+  imagen.loading = "eager";
+
+  imagen.onerror = function () {
+    tarjeta.remove();
+  };
+
+  marco.appendChild(imagen);
+  tarjeta.appendChild(marco);
+
+  return tarjeta;
+}
+
+/* Espera a que cargue la primera imagen para distribuir el contenido */
+function esperarImagen(imagen) {
+  return new Promise(resolve => {
+    if (imagen.complete) {
+      resolve();
+      return;
+    }
+
+    imagen.addEventListener("load", resolve, { once: true });
+    imagen.addEventListener("error", resolve, { once: true });
+  });
+}
+
+/* Distribuye las tarjetas en la columna que tenga menos altura */
+async function distribuirContenido(columnaIzquierda, columnaDerecha, tarjetas) {
+  for (const tarjeta of tarjetas) {
+    const alturaIzquierda =
+      columnaIzquierda.getBoundingClientRect().height;
+
+    const alturaDerecha =
+      columnaDerecha.getBoundingClientRect().height;
+
+    if (alturaIzquierda <= alturaDerecha) {
+      columnaIzquierda.appendChild(tarjeta);
+    } else {
+      columnaDerecha.appendChild(tarjeta);
+    }
+  }
+}
+
+    function cargarPerfil() {
+      const guardada = localStorage.getItem("patiMundoMascota");
+
+      if (!guardada) {
+        document.getElementById("descripcionPerfil").textContent =
+          "Todavía no registraste una mascota.";
+
+        mostrarMensaje(
+          "Registra a tu perro en «Editar mascota» para consultar sus cuidados personalizados."
+        );
+        return;
+      }
+
+      try {
+        mascotaActual = JSON.parse(guardada);
+
+        if (!mascotaActual || typeof mascotaActual !== "object") {
+          throw new Error("Los datos de la mascota no son válidos.");
+        }
+
+        const especie = normalizar(mascotaActual.especie);
+
+        if (especie === "gato") {
+          window.location.replace("gato.html");
+          return;
+        }
+
+        if (especie !== "perro") {
+          mostrarMensaje(
+            "No se reconoce la especie guardada. Revisa el registro de tu mascota."
+          );
+          return;
+        }
+
+        const nombre =
+          mascotaActual.nombre ||
+          mascotaActual.nombreMascota ||
+          "Mi perrito";
+
+        const raza =
+          mascotaActual.categoria ||
+          mascotaActual.raza ||
+          mascotaActual.tipoRaza ||
+          mascotaActual.nombreRaza ||
+          "";
+
+        document.getElementById("nombrePerfil").textContent = nombre;
+
+        document.getElementById("categoriaPerfil").textContent =
+          raza || "Raza no indicada";
+
+        document.getElementById("sexoPerfil").textContent =
+          mascotaActual.sexo || "Sexo no indicado";
+
+        const etapa = obtenerEtapa(mascotaActual);
+
+        document.getElementById("edadPerfil").textContent =
+          etapa
+            ? etiquetasEtapa[etapa]
+            : (mascotaActual.edad ?? "Etapa no indicada");
+
+        const foto =
+          mascotaActual.foto ||
+          mascotaActual.fotoPerfil ||
+          mascotaActual.imagen;
+
+        if (foto) {
+          document.getElementById("fotoPerfil").src = foto;
+        }
+
+        datosActuales = encontrarRaza(raza);
+
+        if (!datosActuales) {
+          document.getElementById("descripcionPerfil").textContent =
+            "No se encontró esta raza en la base de cuidados.";
+
+          mostrarMensaje(
+            "No se encontró una coincidencia para la raza registrada. Revisa que la raza esté incluida en la base de datos."
+          );
+          return;
+        }
+
+        if (!etapa) {
+          document.getElementById("descripcionPerfil").textContent =
+            "No se pudo determinar la etapa de vida.";
+
+          mostrarMensaje(
+            "Indica una edad válida o selecciona una etapa reconocible: cachorro, adulto o senior."
+          );
+          return;
+        }
+
+        const registro = datosActuales.etapas?.[etapa];
+
+        if (!registro) {
+          document.getElementById("descripcionPerfil").textContent =
+            "No hay información para esta raza y etapa.";
+
+          mostrarMensaje(
+            "La base de cuidados no contiene esta combinación de raza y etapa. No se mostrará información de otra etapa."
+          );
+          return;
+        }
+
+        document.getElementById("descripcionPerfil").textContent =
+          "Consulta los cuidados disponibles para " +
+          nombre +
+          " en la etapa " +
+          etiquetasEtapa[etapa].toLowerCase() +
+          ".";
+
+        mostrarTema("alimentacion");
+
+      } catch (error) {
+        console.error("Error al cargar el perfil de la mascota:", error);
+
+        document.getElementById("descripcionPerfil").textContent =
+          "No se pudieron leer los datos del perfil.";
+
+        mostrarMensaje(
+          "No se pudieron leer los datos guardados. Vuelve a registrar la mascota."
+        );
+      }
+    }
+
+    async function mostrarTema(nombreTema) {
+  document.querySelectorAll(".care-card").forEach(boton => {
+    boton.classList.toggle(
+      "active",
+      boton.dataset.tema === nombreTema
+    );
+  });
+
+  if (!mascotaActual || !datosActuales) {
+    mostrarMensaje(
+      "Primero debes tener una mascota registrada y cargar su perfil."
+    );
+    return;
+  }
+
+  const etapa = obtenerEtapa(mascotaActual);
+  const registro = etapa ? datosActuales.etapas?.[etapa] : null;
+  const tema = registro?.temas?.[nombreTema];
+
+  if (!tema) {
+    mostrarMensaje(
+      "Este tema no está disponible para la raza y etapa seleccionadas."
+    );
+    return;
+  }
+
+  const panel = document.getElementById("contenidoTema");
+  panel.replaceChildren();
+
+  const titulo = document.createElement("h2");
+  titulo.textContent = tema.titulo || nombreTema;
+  panel.appendChild(titulo);
+
+  const secciones = Array.isArray(tema.secciones)
+    ? tema.secciones
+    : [];
+
+  if (secciones.length === 0) {
+    mostrarMensaje(
+      "Este tema no tiene secciones disponibles para mostrar."
+    );
+    return;
+  }
+
+  const iconosTema = {
+    alimentacion: "🥣",
+    salud: "🩺",
+    primeros: "🩹",
+    cuidados: "🐾",
+    comportamiento: "🎾",
+    vacunacion: "💉",
+    veterinario: "🏥",
+    descripcion: "🐶"
+  };
+
+  /* Crear las dos columnas */
+  const distribucion = document.createElement("div");
+  distribucion.className = "care-layout";
+
+  const columnaIzquierda = document.createElement("div");
+  columnaIzquierda.className = "care-column";
+
+  const columnaDerecha = document.createElement("div");
+  columnaDerecha.className = "care-column";
+
+  distribucion.append(columnaIzquierda, columnaDerecha);
+  panel.appendChild(distribucion);
+  if (nombreTema === "vacunacion" || nombreTema === "veterinario") {
+  distribucion.style.gridTemplateColumns = "1fr";
+}
+
+  /* Recuperar las dos imágenes originales del tema */
+  const raza = obtenerClaveImagenRaza();
+  const imagenes = imagenesPorRaza[raza]?.[nombreTema];
+
+  if (!imagenes || imagenes.length !== 2) {
+    mostrarMensaje(
+      "No se encontraron las dos imágenes de este tema."
+    );
+    return;
+  }
+  /* Primera imagen: parte superior izquierda */
+  const primeraImagen = crearTarjetaFoto(
+    imagenes[0],
+    "Fotografía relacionada con " + tema.titulo
+  );
+
+  columnaIzquierda.appendChild(primeraImagen);
+
+  const imagenPrincipal = primeraImagen.querySelector("img");
+
+  await esperarImagen(imagenPrincipal);
+
+  /* Segunda imagen: ubicación según el tema */
+  const segundaImagen = crearTarjetaFoto(
+    imagenes[1],
+    "Segunda fotografía relacionada con " + tema.titulo
+  );
+
+  const esVacunacionOVeterinario =
+    nombreTema === "vacunacion" || nombreTema === "veterinario";
+
+  if (!esVacunacionOVeterinario) {
+    columnaDerecha.appendChild(segundaImagen);
+
+    const imagenSecundaria = segundaImagen.querySelector("img");
+    await esperarImagen(imagenSecundaria);
+  }
+
+  /* Crear todas las tarjetas de información sin alterar sus textos */
+  const tarjetas = [];
+
+  secciones.forEach(seccion => {
+    const tarjeta = document.createElement("article");
+    tarjeta.className = "care-content-card";
+
+    const cabecera = document.createElement("div");
+    cabecera.className = "care-content-card-heading";
+
+    const icono = document.createElement("span");
+    icono.className = "care-content-card-icon";
+    icono.textContent = iconosTema[nombreTema] || "🐾";
+    icono.setAttribute("aria-hidden", "true");
+
+    const subtitulo = document.createElement("h3");
+    subtitulo.textContent = seccion.titulo || "Información";
+
+    cabecera.append(icono, subtitulo);
+    tarjeta.appendChild(cabecera);
+
+    if (Array.isArray(seccion.items) && seccion.items.length > 0) {
+      const lista = document.createElement("ul");
+
+      seccion.items.forEach(texto => {
+        const elemento = document.createElement("li");
+        elemento.textContent = texto;
+        lista.appendChild(elemento);
+      });
+
+      tarjeta.appendChild(lista);
+    }
+
+    tarjetas.push(tarjeta);
+  });
+
+  /* Repartir la información entre las dos columnas */
+  await distribuirContenido(
+    columnaIzquierda,
+    columnaDerecha,
+    tarjetas
+  );
+
+  /* Vacunación y Veterinario mantienen la segunda imagen al final */
+  if (esVacunacionOVeterinario) {
+    distribucion.appendChild(segundaImagen);
+    segundaImagen.style.gridColumn = "1 / -1";
+  }
+}
+    // Activar los botones de temas.
+    document.querySelectorAll(".care-card").forEach(boton => {
+      boton.addEventListener("click", () => {
+        mostrarTema(boton.dataset.tema);
+      });
+    });
+
+    // Cargar los datos al abrir la página.
+    cargarPerfil();
+  </script>
+</body>
+</html>
