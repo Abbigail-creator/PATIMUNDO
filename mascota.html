@@ -266,7 +266,7 @@
         return;
       }
 
-      if (archivo.size > 3 * 1024 * 1024) {
+      if (archivo.size > 20 * 1024 * 1024) {
         mostrarMensaje("La foto debe pesar menos de 20 MB.", true);
         entradaFoto.value = "";
         return;
