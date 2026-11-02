@@ -91,7 +91,16 @@
 /* Adaptación para celulares */
 @media (max-width: 650px) {
   .care-photo-frame {
-    height: 350px;
+    height: 350px !important;
+    min-height: 350px !important;
+    max-height: 350px !important;
+  }
+
+  .care-topic-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
   }
 }
 
